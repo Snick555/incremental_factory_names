@@ -1,29 +1,35 @@
 require 'spec_helper'
 
 describe 'IncrementalFactoryNames' do
-  let(:factory_user) { FactoryUser.new }
+  context 'simple' do
+    let(:user1) { build(:user) }
+    let(:user2) { build(:user) }
 
-  it 'returns factory name with number' do
-    result = factory_user.incremental_factory_name(number: 99)
-
-    expect(result).to eq('Factory User 099')
+    it { expect(user1.nickname).to eq('User 001') }
+    it { expect(user2.nickname).to eq('User 002') }
   end
 
-  it 'returns custom name with number' do
-    result = factory_user.incremental_factory_name(number: 99, name: 'Another Factory User')
+  context 'with name' do
+    let(:user1) { build(:user, :with_name) }
+    let(:user2) { build(:user, :with_name) }
 
-    expect(result).to eq('Another Factory User 099')
+    it { expect(user1.nickname).to eq('Nickname 001') }
+    it { expect(user2.nickname).to eq('Nickname 002') }
   end
 
-  it 'returns factory name with number with sprint' do
-    result = factory_user.incremental_factory_name(number: 99, length: 5)
+  context 'with length' do
+    let(:user1) { build(:user, :with_length) }
+    let(:user2) { build(:user, :with_length) }
 
-    expect(result).to eq('Factory User 00099')
+    it { expect(user1.nickname).to eq('User 0001') }
+    it { expect(user2.nickname).to eq('User 0002') }
   end
 
-  it 'returns custom name with number with sprint' do
-    result = factory_user.incremental_factory_name(number: 99, name: 'Another Factory User', length: 5)
+  context 'with name and length' do
+    let(:user1) { build(:user, :with_name_and_length) }
+    let(:user2) { build(:user, :with_name_and_length) }
 
-    expect(result).to eq('Another Factory User 00099')
+    it { expect(user1.nickname).to eq('Another Nickname 01') }
+    it { expect(user2.nickname).to eq('Another Nickname 02') }
   end
 end

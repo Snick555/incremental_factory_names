@@ -1,4 +1,4 @@
-# This gem helps generate incremental factory names for preventing randomly failure specs
+# incremental_factory_names helps generate incremental factory names for preventing randomly failure specs
 
 ## Installation
 
@@ -36,16 +36,16 @@ and in any factory you need to have incremental names:
 ```ruby
 factory :user do
   ...	
-  sequence(:name) { |n| incremental_factory_name(number: n) } # returns 'User 001', 'User 002', etc
+  incremental_factory_name :name # returns 'User 001', 'User 002', etc
   ...
 ```
 
 with additional params:
 ```ruby
   ...
-  sequence(:name) { |n| incremental_factory_name(number: n, name: 'Name') } # returns 'Name 001', 'Name 002', etc
+  incremental_factory_name :name, name: 'Name' # returns 'Name 001', 'Name 002', etc
   ...
-  sequence(:name) { |n| incremental_factory_name(number: n, length: 5) } # returns 'User 00001', 'User 00002', etc
+  incremental_factory_name :name, length: 5 # returns 'User 00001', 'User 00002', etc
   ...
 ```
 
