@@ -41,7 +41,7 @@ factory :user do
 ```
 
 with additional params:
-```
+```ruby
   ...
   sequence(:name) { |n| incremental_factory_name(number: n, name: 'Name') } # returns 'Name 001', 'Name 002', etc
   ...
@@ -51,7 +51,7 @@ with additional params:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at (incremental_factory_names)[https://github.com/Snick555/incremental_factory_names]. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at [incremental_factory_names](https://github.com/Snick555/incremental_factory_names). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
